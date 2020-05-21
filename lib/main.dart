@@ -4,6 +4,8 @@
 // 3) Split the app into three widgets: App, TextControl & Text
 
 import 'package:flutter/material.dart';
+import './text.dart';
+import './text_control.dart';
 
 void main() {
   runApp(Homework());
@@ -34,13 +36,14 @@ class _HomeworkState extends State<Homework> {
       ),
       body: Column(
         children: <Widget>[
-          Text(_fortunes[_currentIndex]),
-          RaisedButton(
-            child: Text('Next fortune'),
-            onPressed: () {
+          Fortune(_fortunes[_currentIndex]),
+          TextControl(
+            buttonText: 'Next fortune',
+            onNextText: () {
               setState(() {
-                _currentIndex =
-                    _currentIndex <= (_fortunes.length - 2) ? _currentIndex + 1 : 0;
+                _currentIndex = _currentIndex <= (_fortunes.length - 2)
+                    ? _currentIndex + 1
+                    : 0;
               });
             },
           ),
